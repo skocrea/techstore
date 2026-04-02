@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Store</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#0f1115;
+  color:#ffffff;
+}
+
+nav{
+  background:#0b0c10;
+  padding:16px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #1f2229;
+}
+
+nav h2{
+  margin:0;
+  color:#4da3ff;
+}
+
+nav a{
+  position:relative;
+  color:#ccc;
+  margin-left:20px;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.hero{
+  text-align:center;
+  padding:80px 20px 60px;
+  background:linear-gradient(180deg,#11131a,#0f1115);
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:#9aa4b2;
+  font-size:18px;
+}
+
+.grid{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px 80px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;
+}
+
+.product{
+  background:#161a22;
+  border-radius:14px;
+  overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease;
+  border:1px solid #242833;
+}
+
+.product:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.product img{
+  width:100%;
+  height:200px;
+  Object-fit: cover;
+  background:#000;
+}
+
+.product-content{
+  padding:18px 18px 22px;
+}
+
+.product h3{
+  margin:0 0 8px;
+  font-size:18px;
+}
+
+.specs{
+  font-size:13px;
+  color:#9aa4b2;
+  margin-bottom:14px;
+}
+
+.price{
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:14px;
+}
+
+.buy-btn{
+  display:inline-block;
+  background:#4da3ff;
+  padding:8px 16px;
+  border-radius:6px;
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.buy-btn:hover{
+  background:#2d8cff;
+}
+
+
+/* scroll reveal animation */
+.product{
+  opacity:0;
+  transform:translateY(40px);
+}
+
+.product.reveal{
+  opacity:1;
+  transform:translateY(0);
+  transition:all .6s ease;
+}
+
+/* cart badge */
+.cart-count{
+  background:#4da3ff;
+  color:white;
+  font-size:11px;
+  padding:2px 6px;
+  border-radius:10px;
+  margin-left:6px;
+}
+
+/* flying cart animation */
+.fly-item{
+  position:fixed;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  transition:all 1.8s cubic-bezier(.2,.8,.2,1);
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <h2>TechStore</h2>
+  <div>
+    <a href="#">Products</a>
+    <a href="#">Deals</a>
+    <a href="#">Support</a>
+    <a href="#">Cart <span id="cart-count" class="cart-count">0</span></a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Latest Tech Products</h1>
+  <p>High performance hardware for work, gaming and creativity.</p>
+</section>
+
+<section class="grid">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1591799265444-d66432b91588?w=800" alt="GPU">
+<div class="product-content">
+<h3>RTX Graphics Card</h3>
+<div class="specs">12GB GDDR6 • Ray Tracing • PCIe 4.0</div>
+<div class="price">$899</div>
+<a class="buy-btn" href="#">Add to Cart</a>
+</div>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800" alt="CPU">
+<div class="product-content">
+<h3>High-End Processor</h3>
+<div class="specs">16 Cores • 5.2GHz Boost • AM5</div>
+<div class="price">$549</div>
+<a class="buy-btn" href="#">Add to Cart</a>
+</div>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1562976540-1502c2145186?w=800" alt="RAM">
+<div class="product-content">
+<h3>32GB DDR5 RAM</h3>
+<div class="specs">6000MHz • Dual Channel • RGB</div>
+<div class="price">$199</div>
+<a class="buy-btn" href="#">Add to Cart</a>
+</div>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800" alt="SSD">
+<div class="product-content">
+<h3>1TB NVMe SSD</h3>
+<div class="specs">7000MB/s • PCIe Gen4 • M.2</div>
+<div class="price">$149</div>
+<a class="buy-btn" href="#">Add to Cart</a>
+</div>
+</div>
+
+</section>
+
+<section style="max-width:1200px;margin:auto;padding:40px 20px;">
+<h2 style="margin-bottom:20px;">Featured Gaming Setup</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;">
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=800" alt="Gaming PC">
+<div class="product-content">
+<h3>Gaming Desktop PC</h3>
+<div class="specs">RTX Graphics • 32GB RAM • 2TB SSD</div>
+<div class="price">$1899</div>
+<a class="buy-btn" href="#">Add to Cart</a>
+</div>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800" alt="Monitor">
+<div class="product-content">
+<h3>4K Gaming Monitor</h3>
+<div class="specs">144Hz • 1ms • HDR</div>
+<div class="price">$499</div>
+<a class="buy-btn" href="#">Add to Cart</a>
+</div>
+</div>
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800" alt="Keyboard">
+<div class="product-content">
+<h3>Mechanical Keyboard</h3>
+<div class="specs">RGB • Hot‑Swap • USB‑C</div>
+<div class="price">$129</div>
+<a class="buy-btn" href="#">Add to Cart</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<footer style="background:#0b0c10;border-top:1px solid #1f2229;padding:40px 20px;margin-top:40px;">
+<div style="max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;">
+
+<div>
+<h3>TechStore</h3>
+<p style="color:#9aa4b2;font-size:14px;">High performance hardware and electronics for gaming, creators and professionals.</p>
+</div>
+
+<div>
+<h4>Shop</h4>
+<p style="color:#9aa4b2;font-size:14px;">Graphics Cards</p>
+<p style="color:#9aa4b2;font-size:14px;">Processors</p>
+<p style="color:#9aa4b2;font-size:14px;">Storage</p>
+</div>
+
+<div>
+<h4>Support</h4>
+<p style="color:#9aa4b2;font-size:14px;">Help Center</p>
+<p style="color:#9aa4b2;font-size:14px;">Warranty</p>
+<p style="color:#9aa4b2;font-size:14px;">Contact</p>
+</div>
+
+</div>
+
+<p style="text-align:center;color:#6b7280;margin-top:30px;font-size:13px;">© 2026 TechStore. All rights reserved.</p>
+</footer>
+
+
+<script>
+
+/* scroll reveal */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("reveal")
+    }
+  })
+},{threshold:0.2})
+
+document.querySelectorAll(".product").forEach(p=>observer.observe(p))
+
+/* cart animation */
+let cart=0
+const cartCount=document.getElementById("cart-count")
+const cartIcon=cartCount.parentElement
+
+document.querySelectorAll(".buy-btn").forEach(btn=>{
+  btn.addEventListener("click",e=>{
+    e.preventDefault()
+
+    const img=btn.closest(".product").querySelector("img")
+    const rect=img.getBoundingClientRect()
+    const cartRect=cartIcon.getBoundingClientRect()
+
+    const clone=img.cloneNode(true)
+    clone.classList.add("fly-item")
+    clone.style.left=rect.left+"px"
+    clone.style.top=rect.top+"px"
+    document.body.appendChild(clone)
+
+    setTimeout(()=>{
+      clone.style.left=cartRect.left+"px"
+      clone.style.top=cartRect.top+"px"
+      clone.style.width="20px"
+      clone.style.height="20px"
+      clone.style.opacity="0.5"
+    },10)
+
+    setTimeout(()=>{
+      clone.remove()
+      cart++
+      cartCount.textContent=cart
+    },1800)
+
+  })
+})
+
+
+/* background scroll animation (black -> white) */
+window.addEventListener("scroll",()=>{
+  const scrollTop=window.scrollY
+  const max=document.body.scrollHeight-window.innerHeight
+  const progress=Math.min(scrollTop/max,1)
+
+  const value=Math.floor(15 + progress*240)
+  const color=`rgb(${value},${value},${value})`
+  document.body.style.background=color
+})
+
+</script>
+</body>
+</html>
